@@ -1,2 +1,2 @@
 # iocage-plugin-redmine
-Redmine Artifact Repo for iocage
+Artifact file(s) for redmine iocage plugin
