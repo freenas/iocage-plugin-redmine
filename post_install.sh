@@ -42,10 +42,15 @@ GRANT ALL PRIVILEGES ON ${DB}.* TO '${USER}'@'localhost';
 FLUSH PRIVILEGES;
 EOF
 
+cp /usr/local/www/redmine/config/database.yml.example /usr/local/www/redmine/config/database.yml
+
 # Setup Redmine
 if [ -n "$IOCAGE_PLUGIN_IP" ] ; then
   sed -i '' "s|host: localhost|host: ${IOCAGE_PLUGIN_IP}|g" /usr/local/www/redmine/config/database.yml
 fi
+
+sed -i '' "s|username: root|username: ${USER}|g" /usr/local/www/redmine/config/database.yml
+sed -i '' "s|password: ""|password: "${PASS}"|g" /usr/local/www/redmine/config/database.yml
 
 # Precompile the assets
 cd /usr/local/www/redmine
