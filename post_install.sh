@@ -12,6 +12,7 @@ fi
 chown -R www:www /usr/local/www/redmine
 
 # Start the service
+service mysql start 2>/dev/null
 service redmine start 2>/dev/null
 service nginx start 2>/dev/null
 
