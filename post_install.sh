@@ -42,7 +42,7 @@ GRANT ALL PRIVILEGES ON ${DB}.* TO '${USER}'@'localhost';
 FLUSH PRIVILEGES;
 EOF
 
-cp /usr/local/www/redmine/config/database.yml.example /usr/local/www/redmine/config/database.yml
+cp /usr/local/www/redmine/config/database.yml.sample /usr/local/www/redmine/config/database.yml
 
 # Setup Redmine
 #if [ -n "$IOCAGE_PLUGIN_IP" ] ; then
