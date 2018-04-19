@@ -50,8 +50,8 @@ cp /usr/local/www/redmine/config/database.yml.example /usr/local/www/redmine/con
 #fi
 
 sed -i '' "s|username: root|username: ${USER}|g" /usr/local/www/redmine/config/database.yml
-#sed -i '' "s|password: ""|password: ${PASS}|g" /usr/local/www/redmine/config/database.yml
-sed 's/password: ""/password: ${PASS}/g' /usr/local/www/redmine/config/database.yml
+sed -IE '' "s|password: ""|password: ${PASS}|g" /usr/local/www/redmine/config/database.yml
+#sed 's/password: ""/password: ${PASS}/g' /usr/local/www/redmine/config/database.yml
 
 # Precompile the assets
 cd /usr/local/www/redmine
