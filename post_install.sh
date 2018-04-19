@@ -50,13 +50,13 @@ cp /usr/local/www/redmine/config/database.yml.example /usr/local/www/redmine/con
 #fi
 
 sed -i '' "s|username: root|username: ${USER}|g" /usr/local/www/redmine/config/database.yml
-sed -i '' "s|password: ""|password: ${PASS}|g" /usr/local/www/redmine/config/database.yml
+#sed -i '' "s|password: ""|password: ${PASS}|g" /usr/local/www/redmine/config/database.yml
+sed 's/password: ""/password: ${PASS}/g' /usr/local/www/redmine/config/database.yml
 
 # Precompile the assets
 cd /usr/local/www/redmine
 bundle install --without development test
 bundle exec rake generate_secret_token
-setenv RAILS_ENV production
 export RAILS_ENV=production
 bundle exec rake db:migrate
 
