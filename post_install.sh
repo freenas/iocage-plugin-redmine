@@ -50,7 +50,7 @@ cp /usr/local/www/redmine/config/database.yml.sample /usr/local/www/redmine/conf
 #fi
 
 # Set db password for redmine
-sed -i '' "s|secure password|${PASS}|g" /usr/local/www/redmine/config/database.yml
+sed -i '' 's|password: ""|password: "${PASS}"|g' /usr/local/www/redmine/config/database.yml
 
 # Precompile the assets
 cd /usr/local/www/redmine
