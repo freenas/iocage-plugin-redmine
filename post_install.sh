@@ -42,7 +42,7 @@ GRANT ALL PRIVILEGES ON ${DB}.* TO '${USER}'@'localhost';
 FLUSH PRIVILEGES;
 EOF
 
-cp /usr/local/www/redmine/config/database.yml.sample /usr/local/www/redmine/config/database.yml
+sed -e 's|["'\'']||g' /usr/local/www/redmine/config/database.yml.sample /usr/local/www/redmine/config/database.yml
 
 # Setup Redmine
 #if [ -n "$IOCAGE_PLUGIN_IP" ] ; then
@@ -51,7 +51,7 @@ cp /usr/local/www/redmine/config/database.yml.sample /usr/local/www/redmine/conf
 
 # Set db password for redmine
 sed -i '' "s|root|${USER}|g" /usr/local/www/redmine/config/database.yml
-sed -i '' "s|password: ""|password: ${PASS}|g" /usr/local/www/redmine/config/database.yml
+sed -i '' "s|password: |password: ${PASS}|g" /usr/local/www/redmine/config/database.yml
 
 # Precompile the assets
 cd /usr/local/www/redmine
