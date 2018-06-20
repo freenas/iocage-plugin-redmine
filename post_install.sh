@@ -49,9 +49,8 @@ cp /usr/local/www/redmine/config/database.yml.sample /usr/local/www/redmine/conf
 #  sed -i '' "s|host: localhost|host: ${IOCAGE_PLUGIN_IP}|g" /usr/local/www/redmine/config/database.yml
 #fi
 
-sed -i '' "s|username: root|username: ${USER}|g" /usr/local/www/redmine/config/database.yml
-sed -IE '' "s|password: ""|password: ${PASS}|g" /usr/local/www/redmine/config/database.yml
-#sed 's/password: ""/password: ${PASS}/g' /usr/local/www/redmine/config/database.yml
+# Set db password for redmine
+sed -i '' "s|secure password|${PASS}|g" /usr/local/www/redmine/config/database.yml
 
 # Precompile the assets
 cd /usr/local/www/redmine
