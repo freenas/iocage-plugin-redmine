@@ -42,12 +42,7 @@ GRANT ALL PRIVILEGES ON ${DB}.* TO '${USER}'@'localhost';
 FLUSH PRIVILEGES;
 EOF
 
-sed -e 's|["'\'']||g' /usr/local/www/redmine/config/database.yml.sample /usr/local/www/redmine/config/database.yml
-
-# Setup Redmine
-#if [ -n "$IOCAGE_PLUGIN_IP" ] ; then
-#  sed -i '' "s|host: localhost|host: ${IOCAGE_PLUGIN_IP}|g" /usr/local/www/redmine/config/database.yml
-#fi
+sed -e 's|["'\'']||g' /usr/local/www/redmine/config/database.yml.sample > /usr/local/www/redmine/config/database.yml
 
 # Set db password for redmine
 sed -i '' "s|root|${USER}|g" /usr/local/www/redmine/config/database.yml
@@ -60,7 +55,6 @@ bundle exec rake generate_secret_token
 bundle exec rake db:migrate RAILS_ENV=production
 
 chmod o-rwx /usr/local/www/redmine
-
 
 echo "Database Name: $DB"
 echo "Database User: $USER"
