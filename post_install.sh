@@ -56,7 +56,11 @@ bundle exec rake db:migrate RAILS_ENV=production
 
 chmod o-rwx /usr/local/www/redmine
 
+service redmine restart 2>/dev/null
+service nginx restart 2>/dev/null
+
 echo "Database Name: $DB"
 echo "Database User: $USER"
 echo "Database Password: $PASS"
-echo "Please open the URL to set your username and password."
+echo "Please open the URL and Login with Username: admin, Password: admin"
+
