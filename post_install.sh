@@ -60,3 +60,9 @@ export RAILS_ENV=production
 bundle exec rake db:migrate
 
 chmod o-rwx /usr/local/www/redmine
+
+
+echo "Database Name: $DB"
+echo "Database User: $USER"
+echo "Database Password: $PASS"
+echo "Please open the URL to set your username and password."
