@@ -59,8 +59,8 @@ chmod o-rwx /usr/local/www/redmine
 service redmine restart 2>/dev/null
 service nginx restart 2>/dev/null
 
-echo "Database Name: $DB"
-echo "Database User: $USER"
-echo "Database Password: $PASS"
-echo "Please open the URL and Login with Username: admin, Password: admin"
+echo "Database Name: $DB" > /root/PLUGIN_INFO
+echo "Database User: $USER" >> /root/PLUGIN_INFO
+echo "Database Password: $PASS" >> /root/PLUGIN_INFO
+echo "Please open the URL and Login with Username: admin, Password: admin" >> /root/PLUGIN_INFO
 
